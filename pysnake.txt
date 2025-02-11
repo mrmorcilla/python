@@ -1,0 +1,218 @@
+import pygame
+import random
+pygame.init()
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+screen_width, screen_height = screen.get_size()
+def colorear(x, y, color):
+    screen.set_at((x, y), color)
+def obtener(x, y):
+    return screen.get_at((x, y))
+class estilo:
+    borde=(100,100,0)
+    fondo=(0,255,0)
+    snake=(0,0,255)
+    manzanas=(255,0,0)
+class datos:
+    manzanas_x=[]
+    manzanas_y=[]
+class snake:
+    _x=4
+    _y=4
+    _l=2 # longitud
+    _d=2 # direccion 1,2,3,4
+class game:
+    running = True
+def colorear_game():
+    f=0
+    colorear(0, f, estilo.borde)
+    colorear(1, f, estilo.borde)
+    colorear(2, f, estilo.borde) 
+    colorear(3, f, estilo.borde)
+    colorear(4, f, estilo.borde)
+    colorear(5, f, estilo.borde)
+    colorear(6, f, estilo.borde)
+    colorear(7, f, estilo.borde)
+    colorear(8, f, estilo.borde)
+    colorear(9, f, estilo.borde)
+    f+=1
+    colorear(0, f, estilo.borde)
+    colorear(1, f, estilo.fondo)
+    colorear(2, f, estilo.fondo) 
+    colorear(3, f, estilo.fondo)
+    colorear(4, f, estilo.fondo)
+    colorear(5, f, estilo.fondo)
+    colorear(6, f, estilo.fondo)
+    colorear(7, f, estilo.fondo)
+    colorear(8, f, estilo.fondo)
+    colorear(9, f, estilo.borde)
+    f+=1
+    colorear(0, f, estilo.borde)
+    colorear(1, f, estilo.fondo)
+    colorear(2, f, estilo.fondo) 
+    colorear(3, f, estilo.fondo)
+    colorear(4, f, estilo.fondo)
+    colorear(5, f, estilo.fondo)
+    colorear(6, f, estilo.fondo)
+    colorear(7, f, estilo.fondo)
+    colorear(8, f, estilo.fondo)
+    colorear(9, f, estilo.borde)
+    f+=1
+    colorear(0, f, estilo.borde)
+    colorear(1, f, estilo.fondo)
+    colorear(2, f, estilo.fondo) 
+    colorear(3, f, estilo.fondo)
+    colorear(4, f, estilo.fondo)
+    colorear(5, f, estilo.fondo)
+    colorear(6, f, estilo.fondo)
+    colorear(7, f, estilo.fondo)
+    colorear(8, f, estilo.fondo)
+    colorear(9, f, estilo.borde)
+    f+=1
+    colorear(0, f, estilo.borde)
+    colorear(1, f, estilo.fondo)
+    colorear(2, f, estilo.fondo) 
+    colorear(3, f, estilo.fondo)
+    colorear(4, f, estilo.fondo)
+    colorear(5, f, estilo.fondo)
+    colorear(6, f, estilo.fondo)
+    colorear(7, f, estilo.fondo)
+    colorear(8, f, estilo.fondo)
+    colorear(9, f, estilo.borde)
+    f+=1
+    colorear(0, f, estilo.borde)
+    colorear(1, f, estilo.fondo)
+    colorear(2, f, estilo.fondo) 
+    colorear(3, f, estilo.fondo)
+    colorear(4, f, estilo.fondo)
+    colorear(5, f, estilo.fondo)
+    colorear(6, f, estilo.fondo)
+    colorear(7, f, estilo.fondo)
+    colorear(8, f, estilo.fondo)
+    colorear(9, f, estilo.borde)
+    f+=1
+    colorear(0, f, estilo.borde)
+    colorear(1, f, estilo.fondo)
+    colorear(2, f, estilo.fondo) 
+    colorear(3, f, estilo.fondo)
+    colorear(4, f, estilo.fondo)
+    colorear(5, f, estilo.fondo)
+    colorear(6, f, estilo.fondo)
+    colorear(7, f, estilo.fondo)
+    colorear(8, f, estilo.fondo)
+    colorear(9, f, estilo.borde)
+    f+=1
+    colorear(0, f, estilo.borde)
+    colorear(1, f, estilo.fondo)
+    colorear(2, f, estilo.fondo) 
+    colorear(3, f, estilo.fondo)
+    colorear(4, f, estilo.fondo)
+    colorear(5, f, estilo.fondo)
+    colorear(6, f, estilo.fondo)
+    colorear(7, f, estilo.fondo)
+    colorear(8, f, estilo.fondo)
+    colorear(9, f, estilo.borde)
+    f+=1
+    colorear(0, f, estilo.borde)
+    colorear(1, f, estilo.fondo)
+    colorear(2, f, estilo.fondo) 
+    colorear(3, f, estilo.fondo)
+    colorear(4, f, estilo.fondo)
+    colorear(5, f, estilo.fondo)
+    colorear(6, f, estilo.fondo)
+    colorear(7, f, estilo.fondo)
+    colorear(8, f, estilo.fondo)
+    colorear(9, f, estilo.borde)
+    f+=1
+    colorear(0, f, estilo.borde)
+    colorear(1, f, estilo.borde)
+    colorear(2, f, estilo.borde) 
+    colorear(3, f, estilo.borde)
+    colorear(4, f, estilo.borde)
+    colorear(5, f, estilo.borde)
+    colorear(6, f, estilo.borde)
+    colorear(7, f, estilo.borde)
+    colorear(8, f, estilo.borde)
+    colorear(9, f, estilo.borde)
+clock = pygame.time.Clock()
+last_time = pygame.time.get_ticks()
+sectime=0
+def colmanz(x,y):
+    if obtener(x, y) == (255, 0, 0):
+        comer()
+def comer():
+    mzn=0
+    while mzn < len(datos.manzanas_x):
+        if (snake._x, snake._y) == (datos.manzanas_x[mzn], datos.manzanas_y[mzn]):
+            print('manzana comida')
+            snake._l += 1
+            datos.manzanas_x.pop(mzn)
+            datos.manzanas_y.pop(mzn)
+        else:
+            mzn += 1
+def mover():
+    if snake._d == 2:
+        if obtener(snake._x+1, snake._y) == estilo.borde:
+            game.running=False
+        else:
+            colorear(snake._x, snake._y, (0, 0, 0))
+            snake._x+=1
+            colorear(snake._x, snake._y, estilo.snake)
+    if snake._d == 1:
+        if obtener(snake._x, snake._y-1) == estilo.borde:
+            game.running=False
+        else:
+            colorear(snake._x, snake._y, (0, 0, 0))
+            snake._y-=1
+            colorear(snake._x, snake._y, estilo.snake)
+    if snake._d == 3:
+        if obtener(snake._x, snake._y+1) == estilo.borde:
+            game.running=False
+        else:
+            colorear(snake._x, snake._y, (0, 0, 0))
+            snake._y+=1
+            colorear(snake._x, snake._y, estilo.snake)
+    if snake._d == 4:
+        if obtener(snake._x-1, snake._y) == estilo.borde:
+            game.running=False
+        else:
+            colorear(snake._x, snake._y, (0, 0, 0))
+            snake._x-=1
+            colorear(snake._x, snake._y, estilo.snake)
+    colmanz(snake._x, snake._y)
+def colorear_manzanas():
+    manz=0
+    for i in range(len(datos.manzanas_x)):
+        colorear(datos.manzanas_x[i], datos.manzanas_y[i], estilo.manzanas)
+        manz+=1
+def actualizar():
+    colorear_game()
+    colorear_manzanas()
+while game.running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            game.running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                snake._d=4
+            if event.key == pygame.K_RIGHT:
+                snake._d=2
+            if event.key == pygame.K_UP:
+                snake._d=1
+            if event.key == pygame.K_DOWN:
+                snake._d=3
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            x, y = pygame.mouse.get_pos()
+            colorear(x, y, (255, 0, 0))
+    current_time = pygame.time.get_ticks()
+    if current_time - last_time >= 250:
+        actualizar()
+        mover()
+        sectime+=1
+        last_time = current_time
+    if sectime == 12:
+        datos.manzanas_x.append(random.randint(1,8))
+        datos.manzanas_y.append(random.randint(1,8))
+        sectime=0
+    pygame.display.flip()
+    clock.tick(60)
+pygame.quit()
