@@ -1,1 +1,1 @@
-& C:/Users/Usuario/AppData/Local/Programs/Python/Python312/python.exe "c:/Users/Usuario/Desktop/snake bit/api.py"
+{"vaca":"lacteo"}
