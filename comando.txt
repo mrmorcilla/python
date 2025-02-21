@@ -1,1 +1,1 @@
-execute print("queso")
+void
