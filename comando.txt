@@ -1,1 +1,1 @@
-execute desde.archivo ('cmd.txt')
+void
