@@ -1,1 +1,1 @@
-void
+ejecutar print('queso')
