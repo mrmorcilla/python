@@ -1,1 +1,1 @@
-print('hola')
+execute latencia=2
