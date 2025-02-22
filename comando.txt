@@ -1,1 +1,1 @@
-execute print(5*5)
+void
