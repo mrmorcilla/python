@@ -1,1 +1,1 @@
-execute import ALIEN_MASTER
+void
