@@ -1,1 +1,1 @@
-execute print("hola")
+void
