@@ -1,1 +1,1 @@
-execute import cmd.txt
+print('hola')
