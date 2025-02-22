@@ -1,1 +1,1 @@
-void
+execute add_function('cmd.txt')
