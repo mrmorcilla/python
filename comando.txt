@@ -1,1 +1,1 @@
-execute a=0
+void
