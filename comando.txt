@@ -1,1 +1,1 @@
-ejecutar desde.archivo ('cmd.txt')
+ejecutar print('hola')
