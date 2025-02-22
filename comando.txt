@@ -1,1 +1,1 @@
-void
+execute lantencia=0.5
