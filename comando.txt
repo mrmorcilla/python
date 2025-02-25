@@ -1,1 +1,1 @@
-devolucion: local imp cmd.txt
+local imp cmd.txt
