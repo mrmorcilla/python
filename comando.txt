@@ -1,1 +1,1 @@
-hola
+Resultado de la operación 5+5: 10
