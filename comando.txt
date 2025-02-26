@@ -1,1 +1,1 @@
-Comando desconocido.
+arch C:/Users/Usuario/Documents/obeja.txt
