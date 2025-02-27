@@ -1,1 +1,1 @@
-abc
+arch cmd.txt
