@@ -1,4 +1,0 @@
-cliente.py
-cmd.txt
-PentaMorci.py
-server.py
