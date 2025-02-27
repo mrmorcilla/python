@@ -1,1 +1,1 @@
-arch cmd.txt
+list C:\Users\Usuario\Desktop\monitern FULLSERVER
