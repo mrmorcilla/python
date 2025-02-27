@@ -1,1 +1,1 @@
-list C:\Users\Usuario\Desktop\monitern FULLSERVER
+comando print("caca")
