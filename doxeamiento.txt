@@ -15,10 +15,10 @@
     "IP Local": "192.168.0.4",
     "IP Pública": "186.152.86.49",
     "Ubicación": {
-        "País": "Argentina",
+        "País": "AR",
         "Ciudad": "Cosquín",
-        "Latitud": -31.2056,
-        "Longitud": -64.5278,
-        "ISP": "Telecom Argentina S.A."
+        "Latitud": "-31.2452",
+        "Longitud": "-64.4657",
+        "ISP": "AS7303 Telecom Argentina S.A."
     }
 }
