@@ -1,24 +1,24 @@
 {
-    "Sistema Operativo": "Windows",
-    "Versión del SO": "10.0.26100",
-    "Nombre del SO": "Windows-11-10.0.26100-SP0",
+    "Sistema Operativo": "Linux",
+    "Versión del SO": "#1 SMP PREEMPT Mon Mar 6 09:26:16 CST 2023",
+    "Nombre del SO": "Linux-5.4.161-android12-9-gdfc0d0c0516d-aarch64-with-libc",
     "Arquitectura": [
         "64bit",
-        "WindowsPE"
+        "ELF"
     ],
-    "Procesador": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "Procesador": "",
     "Núcleos Físicos": 8,
-    "Núcleos Totales": 16,
-    "RAM Total (GB)": 15.3,
-    "Dirección MAC": "28:c2",
-    "Nombre del Dispositivo": "Andres",
-    "IP Local": "192.168.0.4",
+    "Núcleos Totales": 8,
+    "RAM Total (GB)": 3.5,
+    "Dirección MAC": "e3:c4",
+    "Nombre del Dispositivo": "localhost",
+    "IP Local": "127.0.0.1",
     "IP Pública": "186.152.86.49",
     "Ubicación": {
-        "País": "AR",
+        "País": "Argentina",
         "Ciudad": "Cosquín",
-        "Latitud": "-31.2452",
-        "Longitud": "-64.4657",
-        "ISP": "AS7303 Telecom Argentina S.A."
+        "Latitud": -31.2056,
+        "Longitud": -64.5278,
+        "ISP": "Telecom Argentina S.A."
     }
 }
