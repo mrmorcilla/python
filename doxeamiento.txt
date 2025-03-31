@@ -1,24 +1,24 @@
 {
-    "Sistema Operativo": "Linux",
-    "Versión del SO": "#1 SMP PREEMPT_DYNAMIC Thu Jun 27 21:05:47 UTC 2024",
-    "Nombre del SO": "Linux-6.1.85+-x86_64-with-glibc2.35",
+    "Sistema Operativo": "Windows",
+    "Versión del SO": "10.0.26100",
+    "Nombre del SO": "Windows-11-10.0.26100-SP0",
     "Arquitectura": [
         "64bit",
-        "ELF"
+        "WindowsPE"
     ],
-    "Procesador": "x86_64",
-    "Núcleos Físicos": 1,
-    "Núcleos Totales": 2,
-    "RAM Total (GB)": 12.67,
-    "Dirección MAC": "00:0c",
-    "Nombre del Dispositivo": "26460a875b3f",
-    "IP Local": "172.28.0.12",
-    "IP Pública": "35.237.223.92",
+    "Procesador": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "Núcleos Físicos": 8,
+    "Núcleos Totales": 16,
+    "RAM Total (GB)": 15.3,
+    "Dirección MAC": "28:c2",
+    "Nombre del Dispositivo": "Andres",
+    "IP Local": "192.168.0.4",
+    "IP Pública": "186.152.86.49",
     "Ubicación": {
-        "País": "US",
-        "Ciudad": "North Charleston",
-        "Latitud": "32.8546",
-        "Longitud": "-79.9748",
-        "ISP": "AS396982 Google LLC"
+        "País": "AR",
+        "Ciudad": "Cosquín",
+        "Latitud": "-31.2452",
+        "Longitud": "-64.4657",
+        "ISP": "AS7303 Telecom Argentina S.A."
     }
 }
